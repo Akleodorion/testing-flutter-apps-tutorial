@@ -27,7 +27,7 @@ void main() {
       Article(title: 'Test 2', content: 'Test 2 content'),
       Article(title: 'Test 3', content: 'Test 3 content')
     ];
-    
+
     void arrangeNewsServiceReturns3articles() {
       when(() => mockNewsService.getArticles())
           .thenAnswer((_) async => testValue);
@@ -38,6 +38,7 @@ void main() {
       () async {
         arrangeNewsServiceReturns3articles();
         await sut.getArticles();
+        // Vérification qu'un methode est appelée.
         verify(() => mockNewsService.getArticles()).called(1);
       },
     );
